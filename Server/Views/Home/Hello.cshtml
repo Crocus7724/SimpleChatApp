@@ -9,30 +9,36 @@
 	<script type="text/javascript">
 		var sample = $.connection.hello;
 		$.connection.hub.start();
-		function submit(objId) {
-			sample.server.hello($(objId).value);
-		};
+		$(document)
+			.ready(function() {
+				$("#submitName")
+					.click(function() {
+						sample.server.login($("#name").val());
+					});
 
-		$("#submitButton")
-			.click(function() {
-				var text = $("#textbox").val();
-				sample.serverhello(text);
+				$("#submitButton")
+					.click(function() {
+						sample.server.chat($("#name").val(),$("#textbox").val());
+					});
 			});
 
-		sample.client.helloWorld = function(value) {
+
+		sample.client.chat = function(value) {
 			$("#list").append("<li>" + value + "</li>");
 		}
 	</script>
 </head>
 <body>
 <div>
-	Hello World!!
+	Hello SinalR World!!
 	<form>
+		<input id="name" type="text" value="Gest">
+		<input id="submitName" type="button" value="ログイン"/>
 		<input id="textbox" type="text"/>
 		<input id="submitButton" type="button" value="送信"/>
 	</form>
 	<hr/>
-	<p>チャット</p>
+	<p>チャット欄</p>
 	<ul id="list">
 
 	</ul>

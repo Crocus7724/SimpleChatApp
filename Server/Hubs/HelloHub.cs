@@ -6,9 +6,14 @@ namespace Server.Hubs
 	[HubName("hello")]
 	public class HelloHub:Hub
 	{
-		public void Hello(string name)
+		public void Chat(string name,string text)
 		{
-			Clients.All.helloWorld($"{name}: Hello World!!");
+			Clients.All.Chat($"{name}: {text}");
+		}
+
+		public void Login(string name)
+		{
+			Clients.All.Chat($"{name}がログインしました。");
 		}
 	}
 }

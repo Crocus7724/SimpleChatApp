@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<title>SampleHub</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.3.js"></script>
+	<script src="/signalr/js"></script>
+	<script type="text/javascript">
+		var sample = $.connection.hello;
+		$.connection.hub.start();
+		function submit(objId) {
+			sample.server.hello($(objId).value);
+		};
+
+		$("#submitButton")
+			.click(function() {
+				var text = $("#textbox").val();
+				sample.serverhello(text);
+			});
+
+		sample.client.helloWorld = function(value) {
+			$("#list").append("<li>" + value + "</li>");
+		}
+	</script>
+</head>
+<body>
+<div>
+	Hello World!!
+	<form>
+		<input id="textbox" type="text"/>
+		<input id="submitButton" type="button" value="送信"/>
+	</form>
+	<hr/>
+	<p>チャット</p>
+	<ul id="list">
+
+	</ul>
+</div>
+</body>
+</html>

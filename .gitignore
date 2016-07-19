@@ -1,0 +1,9 @@
+.idea.SimpleChatApp
+App/bin
+App/obj
+Droid/bin
+Droid/obj
+iOS/bin
+iOS/obj
+Server/obj
+Server/bin
